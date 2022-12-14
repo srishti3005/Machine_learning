@@ -1,0 +1,102 @@
+import numpy as np
+def union(A,B):
+result={}
+for i in A:
+if(A[i]>B[i]):
+result[i]=A[i]
+else:
+result[i]=B[i]
+print("Union of two sets is",result)
+def intersection(A,B):
+result={}
+for i in A:
+if(A[i]<B[i]):
+result[i]=A[i]
+else:
+result[i]=B[i]
+print("Intersection of two sets is",result)
+def complement(A,B):
+result={}
+result1={}
+for i in A:
+result[i]=round(1-A[i],2)
+for i in B:
+result1[i]=round(1-B[i],2)
+print("Complement of  1st set is",result)
+print("Complement of  2nd set is",result1)
+def difference(A,B):
+result={}
+for i in A:
+result[i]=round(min(A[i],1-B[i]),2)
+print("Difference of two sets is",result)
+def cartprod(A,B):
+R = [[] for i in range(len(A))]
+i = 0
+for x in A:
+for y in B:
+R[i].append(min(A[x], B[y]))
+i += 1
+print("Cartesian Product is",np.array(R),"\n") 
+def maxmin():
+R = None
+S = None
+with open("./relations.json") as f:
+relations = json.load(f)
+R = relations["R"]
+S = relations["S"]
+print("\nR: " + str(R))
+print("S: " + str(S))
+m, n = len(R), len(R[0])
+= len(S[0])
+composition = dict()
+for i in range(m):
+composition[i] = dict()
+for k in range(o):
+composition[i][k] = max([min(R[i][j], S[j][k]) for j in range(n)])
+return composition
+import json
+def main(): 
+while True:
+print("Menu Driven Program")
+print("1.Union")
+print("2.Intersection")
+print("3.Complement")    
+print("4.Difference")
+print("5.Cartesian product")
+print("6.MaxMin Composition")
+print("7.Exit")
+choice=int(input("Enter your choice:"))
+if choice==1:
+union(d,d1)
+elif choice==2:
+intersection(d,d1)
+elif choice==3:
+complement(d,d1)
+elif choice==4:
+difference(d,d1)
+elif choice==5:
+cartprod(d,d1)
+elif choice==6:
+composition=maxmin()
+print("\nMax-min composition:", composition, sep="\n")
+elif choice==7:
+break
+else:
+print("Wrong choice")
+if __name__ == "__main__": 
+print("----------------------"+
+"FUZZY SET OPERATIONS"+ 
+"----------------------")
+n = int(input("enter  no.of elements of set 1:"))
+d = {}
+for i in range(n):
+keys = input() 
+values = float(input())
+d[keys] = values
+n1 = int(input("enter  no.of elements of set 2:"))
+d1 = {}
+for i in range(n1):
+keys1 = input() 
+values1 = float(input())
+d1[keys1] = values1
+main()
